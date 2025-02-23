@@ -1,4 +1,4 @@
-using Divarcheh.Domain.AppServices;
+﻿using Divarcheh.Domain.AppServices;
 using Divarcheh.Domain.Core.Contracts.AppService;
 using Divarcheh.Domain.Core.Entities.Configs;
 using Divarcheh.Domain.Services;
@@ -28,8 +28,23 @@ namespace Divarcheh.Endpoints.RazorPages.Areas.Account.Pages
 
         public async Task<IActionResult> OnPost()
         {
-            await userAppService.Login(PageModel.Username, PageModel.Password,true);
-            return RedirectToPage("Login");
+            var result = await userAppService.Login(PageModel.Username, PageModel.Password,true);
+
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError(string.Empty ,"نام کاربری یا کلمه عبور اشتباه است.");
+                return Page();
+            }
+
+            var userRole = UserTools.GetRole(User.Claims);
+
+            return userRole switch
+            {
+                "Admin" => RedirectToPage("Index", new { area = "Admin" }),
+                "Visitor" => RedirectToPage("Index", new { area = "Visitor" }),
+                "Advertiser" => RedirectToPage("Index", new { area = "Advertiser" }),
+                _ => RedirectToPage("Login"),
+            };
         }
     }
 }

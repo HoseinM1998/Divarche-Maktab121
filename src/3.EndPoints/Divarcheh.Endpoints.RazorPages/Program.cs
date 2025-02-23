@@ -12,8 +12,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Divarcheh.Domain.Core.Entities.User;
 using Divarcheh.Endpoints.RazorPages;
+using Divarcheh.Endpoints.RazorPages.Middleware;
 using Framework;
 using Hangfire;
+using Serilog;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -79,6 +81,15 @@ builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
     .AddRoles<IdentityRole<int>>()
     .AddEntityFrameworkStores<AppDbContext>();
 
+builder.Host.ConfigureLogging(o => {
+    o.ClearProviders();
+    o.AddSerilog();
+}).UseSerilog((context, config) =>
+{
+    config.WriteTo.Seq("http://localhost:5341", apiKey: "FvT1IrWSOoP1DIRjIulv");
+});
+
+
 var app = builder.Build();
 
 
@@ -90,6 +101,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+//app.UseErrorLogging();
 //app.UseMiddleware<ExceptionMiddleware>();
 app.MapHangfireDashboard();
 app.UseHttpsRedirection();
@@ -100,7 +112,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.UseSerilogRequestLogging();
 app.MapRazorPages();
 
 RecurringJob

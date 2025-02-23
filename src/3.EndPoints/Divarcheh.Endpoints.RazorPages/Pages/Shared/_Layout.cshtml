@@ -117,8 +117,15 @@
                             </li>
                             <li class="nav-item">
                                 <form class="form-inline" >
-									<button asp-area="Account" asp-page="Logout"  class="nav-link btn btn-link text-dark">خروج</button>
+                                    <button asp-area="Account" asp-page="Logout"  class="nav-link btn btn-link text-dark">خروج</button>
+                                    
+									@if (User.IsInRole("Admin"))
+                                    {
+                                        <button asp-area="Admin" asp-page="Index"  class="nav-link btn btn-link text-dark">پنل ادمین</button>
+                                    }
+
                                 </form>
+
                             </li>
                         }
 

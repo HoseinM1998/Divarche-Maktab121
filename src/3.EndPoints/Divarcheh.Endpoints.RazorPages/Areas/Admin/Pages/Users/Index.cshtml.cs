@@ -20,9 +20,10 @@ namespace Divarcheh.Endpoints.RazorPages.Areas.Admin.Pages.Users
         public List<UserSummaryDto> users { get; set; }
    
         public void OnGet()
-        
+
         {
-            var data = User;
+            TempData["Menu-Users"] = "current";
+            TempData["Menu-Dashboard"] = string.Empty;
 
             users = _userAppService.GetAll();
         }

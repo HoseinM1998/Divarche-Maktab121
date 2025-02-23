@@ -14,7 +14,7 @@
         </div><!-- /.portlet-heading -->
         <div class="portlet-body">
             <div class="top-buttons-box mb-2">
-                <a class="btn btn-success" href="#">
+                <a class="btn btn-success" asp-page="Create">
                     <i class="icon-plus"></i>
                     افزودن
                     <div class="paper-ripple"><div class="paper-ripple__background"></div><div class="paper-ripple__waves"></div></div>
@@ -22,7 +22,7 @@
             </div>
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped" id="data-table">
+                    <table class="table table-bordered table-hover table-striped" id="user-table">
                         <thead>
                             <tr>
                                 <th class="p-low"><input type="checkbox" id="btn-check-all-toggle"></th>
@@ -36,7 +36,6 @@
                                 <th>شهر</th>
                                 <th>نقش</th>
                                 <th>عملیات</th>
-
                             </tr>
                         </thead>
                         <tbody>

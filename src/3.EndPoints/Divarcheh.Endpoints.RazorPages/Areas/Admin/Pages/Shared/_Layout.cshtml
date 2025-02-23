@@ -1,5 +1,4 @@
 ﻿@using Framework
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl" class="rtl">
 
@@ -37,75 +36,74 @@
 </head>
 <body class="active-ripple theme-darkpurple fix-header sidebar-extra bg-1">
 
+@await Html.PartialAsync("_Header")
 
-    @await Html.PartialAsync("_Header")
+<!-- BEGIN WRAPPER -->
 
-    <!-- BEGIN WRAPPER -->
+<div id="wrapper">
 
-    <div id="wrapper">
+    <!-- BEGIN SIDEBAR -->
+    @await Html.PartialAsync("_Sidebar")
+    <!-- END SIDEBAR -->
+    <!-- BEGIN PAGE CONTENT -->
+    <div id="page-content">
+        <div id="inner-content">
+            <div class="row">
+                <!-- BEGIN BREADCRUMB -->
+                <div class="col-md-12">
+                    <div class="breadcrumb-box shadow">
+                        <ul class="breadcrumb">
+                            <li><a href="#">@ViewData["Title"]</a></li>
+                        </ul>
+                        <div class="breadcrumb-left">
+                            @DateTime.Now.ToPersianString("dddd, dd MMMM,yyyy")
+                            <i class="icon-calendar"></i>
+                        </div><!-- /.breadcrumb-left -->
+                    </div><!-- /.breadcrumb-box -->
+                </div><!-- /.col-md-12 -->
+                <!-- END BREADCRUMB -->
 
-        <!-- BEGIN SIDEBAR -->
-        @await Html.PartialAsync("_Sidebar")
-        <!-- END SIDEBAR -->
-        <!-- BEGIN PAGE CONTENT -->
-        <div id="page-content">
-            <div id="inner-content">
-                <div class="row">
-                    <!-- BEGIN BREADCRUMB -->
-                    <div class="col-md-12">
-                        <div class="breadcrumb-box shadow">
-                            <ul class="breadcrumb">
-                                <li><a href="#">@ViewData["Title"]</a></li>
-                            </ul>
-                            <div class="breadcrumb-left">
-                                @DateTime.Now.ToPersianString("dddd, dd MMMM,yyyy")
-                                <i class="icon-calendar"></i>
-                            </div><!-- /.breadcrumb-left -->
-                        </div><!-- /.breadcrumb-box -->
-                    </div><!-- /.col-md-12 -->
-                    <!-- END BREADCRUMB -->
-
-                    <div class="col-md-12">
+                <div class="col-md-12">
+                    <div class="row">
                         <div class="row">
-                            <div class="row">
-                                @RenderBody()
-                              
-                            </div>
+                            @RenderBody()
 
-                        </div><!-- /.row -->
+                        </div>
 
-                    </div><!-- /.col-md-12 -->
-                </div><!-- /.row -->
-            </div><!-- /#inner-content -->
-        </div><!-- /#page-content -->
-        <!-- END PAGE CONTENT -->
+                    </div><!-- /.row -->
 
-    </div><!-- /#wrapper -->
-    <!-- END WRAPPER -->
-    @await Html.PartialAsync("_Footer")
-    <!-- BEGIN SETTING -->
-    @await Html.PartialAsync("_Setting")
+                </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
+        </div><!-- /#inner-content -->
+    </div><!-- /#page-content -->
+    <!-- END PAGE CONTENT -->
 
-    <!-- END SETTING -->
-    <!-- BEGIN JS -->
-    <script src="~/AdminTemplate/plugins/jquery/dist/jquery-3.6.1.min.js"></script>
-    <script src="~/AdminTemplate/plugins/bootstrap/bootstrap5/js/bootstrap.bundle.min.js"></script>
-    <script src="~/AdminTemplate/plugins/metisMenu/dist/metisMenu.min.js"></script>
-    <script src="~/AdminTemplate/plugins/paper-ripple/dist/PaperRipple.min.js"></script>
-    <script src="~/AdminTemplate/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="~/AdminTemplate/plugins/sweetalert2/dist/sweetalert2.min.js"></script>
-    <script src="~/AdminTemplate/plugins/screenfull/dist/screenfull.min.js"></script>
-    <script src="~/AdminTemplate/plugins/iCheck/icheck.min.js"></script>
-    <script src="~/AdminTemplate/plugins/switchery/dist/switchery.js"></script>
+</div><!-- /#wrapper -->
+<!-- END WRAPPER -->
+@await Html.PartialAsync("_Footer")
+<!-- BEGIN SETTING -->
+@await Html.PartialAsync("_Setting")
+
+<!-- END SETTING -->
+<!-- BEGIN JS -->
+<script src="~/AdminTemplate/plugins/jquery/dist/jquery-3.6.1.min.js"></script>
+<script src="~/AdminTemplate/plugins/bootstrap/bootstrap5/js/bootstrap.bundle.min.js"></script>
+<script src="~/AdminTemplate/plugins/metisMenu/dist/metisMenu.min.js"></script>
+<script src="~/AdminTemplate/plugins/paper-ripple/dist/PaperRipple.min.js"></script>
+<script src="~/AdminTemplate/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="~/AdminTemplate/plugins/sweetalert2/dist/sweetalert2.min.js"></script>
+<script src="~/AdminTemplate/plugins/screenfull/dist/screenfull.min.js"></script>
+<script src="~/AdminTemplate/plugins/iCheck/icheck.min.js"></script>
+<script src="~/AdminTemplate/plugins/switchery/dist/switchery.js"></script>
 <script src="~/AdminTemplate/js/core.js"></script>
 
 <!-- BEGIN PAGE JAVASCRIPT -->
- 
-<!-- END PAGE JAVASCRIPT -->    
+
+<!-- END PAGE JAVASCRIPT -->
 
 @await RenderSectionAsync("Scripts", required: false)
-    <!-- BEGIN PAGE JAVASCRIPT -->
-    <!-- END PAGE JAVASCRIPT -->
+<!-- BEGIN PAGE JAVASCRIPT -->
+<!-- END PAGE JAVASCRIPT -->
 </body>
 
 </html>

@@ -2,6 +2,7 @@
 using Divarcheh.Domain.Core.Contracts.AppService;
 using Divarcheh.Domain.Core.Contracts.Service;
 using Divarcheh.Domain.Core.Dto.Advertisement;
+using Divarcheh.Domain.Core.Entities.Advertisement;
 
 namespace Divarcheh.Domain.AppServices
 {
@@ -32,6 +33,11 @@ namespace Divarcheh.Domain.AppServices
             model.Brands = await baseDataService.GetBrands(cancellationToken);
 
             return model;
+        }
+
+        public async Task<IEnumerable<GetAdvertisementDto>> GetNewest(CancellationToken cancellationToken)
+        {
+            return await advertisementService.GetNewest(cancellationToken);
         }
     }
 }

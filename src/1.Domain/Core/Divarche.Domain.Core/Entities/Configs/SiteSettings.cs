@@ -4,5 +4,6 @@
     {
         public ConnectionStrings ConnectionStrings { get; set; }
         public string ApiKey { get; set; }
+        public AdvConfig AdvConfig { get; set; }
     }
 }

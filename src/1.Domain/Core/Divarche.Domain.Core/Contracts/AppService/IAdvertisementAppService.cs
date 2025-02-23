@@ -1,4 +1,5 @@
 ﻿using Divarcheh.Domain.Core.Dto.Advertisement;
+using Divarcheh.Domain.Core.Entities.Advertisement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace Divarcheh.Domain.Core.Contracts.AppService
     {
         Task Create(CreateAdvertisementDto model, CancellationToken cancellationToken);
         Task<GetForItemsOutputDto> GetForItems(int childId, CancellationToken cancellationToken);
+        Task<IEnumerable<GetAdvertisementDto>> GetNewest(CancellationToken cancellationToken);
     }
 }

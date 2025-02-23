@@ -11,5 +11,8 @@ namespace Divarcheh.Domain.Core.Contracts.Repository
     public interface IAdvertisementRepository
     {
         Task<int> Create(CreateAdvertisementDto model,CancellationToken cancellationToken);
+        Task<IEnumerable<GetAdvertisementDto>> GetMostVisited(CancellationToken cancellationToken);
+        Task<IEnumerable<GetAdvertisementDto>> GetMostPopular(CancellationToken cancellationToken);
+        Task<IEnumerable<GetAdvertisementDto>> GetNewest(CancellationToken cancellationToken);
     }
 }

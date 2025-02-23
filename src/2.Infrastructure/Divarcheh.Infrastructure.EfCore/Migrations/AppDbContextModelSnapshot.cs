@@ -522,18 +522,18 @@ namespace Divarcheh.Infrastructure.EfCore.Migrations
                             Id = 1,
                             AccessFailedCount = 0,
                             CityId = 1,
-                            ConcurrencyStamp = "69592718-b4f5-4ee4-bb20-4beff0efad53",
+                            ConcurrencyStamp = "889cc20c-3cd7-4322-a06a-a8ae51ea1503",
                             Email = "Admin@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Mobile = "09377507920",
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHNv2nTTEAcWuKXcOdFopcsybAkYvCJ+XBN2OKcw4yM3trKE5s6R+bY1uAuzWC5wsg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELFvUBgeSg1M8B9ag0TmuFQKgwKIFnI7ReP46sntDF5l9ZKgIDofTzEdroH+lPsAQQ==",
                             PhoneNumberConfirmed = false,
                             RegisterAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RoleId = 1,
-                            SecurityStamp = "cfa679c9-6945-419c-91e5-32a010c73ae4",
+                            SecurityStamp = "d8020bb2-732f-4bfc-893c-3366a152fd83",
                             TwoFactorEnabled = false,
                             UserName = "Admin@gmail.com"
                         });
@@ -669,6 +669,22 @@ namespace Divarcheh.Infrastructure.EfCore.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("AspNetUserClaims", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role",
+                            ClaimValue = "Admin",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ClaimType = "FullName",
+                            ClaimValue = "مسعود ملکی",
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>

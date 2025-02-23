@@ -6,12 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Divarcheh.Domain.Core.Dto.Advertisement;
 using Divarcheh.Domain.Core.Entities.Advertisement;
+using Divarcheh.Domain.Core.Entities.Configs;
 using Divarcheh.Domain.Core.Enum;
 using Divarcheh.Infrastructure.EfCore.Common;
+using Microsoft.EntityFrameworkCore;
 
 namespace Divarcheh.Infrastructure.EfCore.Repositories
 {
-    public class AdvertisementRepository(AppDbContext dbContext) : IAdvertisementRepository
+    public class AdvertisementRepository(AppDbContext dbContext, SiteSettings siteSettings) : IAdvertisementRepository
     {
         public async Task<int> Create(CreateAdvertisementDto model, CancellationToken cancellationToken)
         {
@@ -43,7 +45,36 @@ namespace Divarcheh.Infrastructure.EfCore.Repositories
 
                 throw new Exception("Exception");
             }
-            
+
+        }
+
+        public Task<IEnumerable<GetAdvertisementDto>> GetMostVisited(CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<GetAdvertisementDto>> GetMostPopular(CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<GetAdvertisementDto>> GetNewest(CancellationToken cancellationToken)
+        {
+            var ads = await dbContext.Advertisements
+                .OrderByDescending(x => x.CreateAt)
+                .Take(siteSettings.AdvConfig.CountInHomePage)
+                .Select(x => new GetAdvertisementDto()
+                {
+                    Title = x.Title,
+                    Category = x.Category.ParentCategory.Title,
+                    SubCategory = x.Category.Title,
+                    Price = x.Price,
+                    ImagePath = x.Images.FirstOrDefault().Path,
+                    CreateAt = x.CreateAt,
+                    Status = x.AdvertisementStatus
+                }).ToListAsync(cancellationToken);
+
+            return ads;
         }
     }
 }

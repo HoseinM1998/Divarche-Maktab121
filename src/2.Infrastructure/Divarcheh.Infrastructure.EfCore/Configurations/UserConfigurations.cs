@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using System.Security.Claims;
 
 namespace MaktabNews.Infrastructure.EfCore.Configurations;
 public class UserConfigurations
@@ -34,6 +35,11 @@ public class UserConfigurations
             user.PasswordHash = passwordHasher.HashPassword(user, "123456");
             builder.Entity<User>().HasData(user);
         }
+
+        builder.Entity<IdentityUserClaim<int>>().HasData(
+            new IdentityUserClaim<int>() { Id = 1 , UserId = 1 ,ClaimType = ClaimTypes.Role , ClaimValue = "Admin"},
+            new IdentityUserClaim<int>() { Id = 2 , UserId = 1 ,ClaimType = "FullName" , ClaimValue = "مسعود ملکی"}
+        );
 
         // Seed Roles
         builder.Entity<IdentityRole<int>>().HasData(

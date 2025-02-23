@@ -8,13 +8,13 @@
                 </a>
                 <ul>
                     <li>
-                        <a href="dashboard.html" class="current">
+                        <a asp-page="/Index" class="@TempData["Menu-Dashboard"]">
                             <i class="icon-home"></i>
-                            <span>آگهی ها</span>
+                            <span>داشبورد</span>
                         </a>
                     </li>
                     <li>
-                        <a href="dashboard2.html" class="">
+                        <a id="myLink" asp-page="Users/Index" class="@TempData["Menu-Users"]">
                             <i class="icon-home"></i>
                             <span>کاربران</span>
                         </a>

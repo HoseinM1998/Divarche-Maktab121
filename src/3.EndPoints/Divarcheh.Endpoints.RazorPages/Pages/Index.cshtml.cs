@@ -1,52 +1,18 @@
-using Divarcheh.Domain.Core.Entities.User;
-using Hangfire;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+using Divarcheh.Domain.AppServices;
+using Divarcheh.Domain.Core.Contracts.AppService;
+using Divarcheh.Domain.Core.Entities.Advertisement;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Divarcheh.Endpoints.RazorPages.Pages
 {
-    public class IndexModel : PageModel
+    public class IndexModel (IAdvertisementAppService advertisementAppService) : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-        private readonly IBackgroundJobClient _backgroundJob;
-        private readonly UserManager<User> _userManager;
+        [BindProperty] public IEnumerable<GetAdvertisementDto> NewestAdvertisement { get; set; }
 
-
-        public IndexModel(ILogger<IndexModel> logger, IBackgroundJobClient backgroundJob, UserManager<User> userManager)
+        public async Task OnGet(CancellationToken cancellationToken)
         {
-            _logger = logger;
-            _backgroundJob = backgroundJob;
-            _userManager = userManager;
-        }
-
-        [Authorize(Roles = "Visitor")]
-        public async Task OnGet()
-        {
-
-            var claims = User.Claims;
-
-            _backgroundJob
-                .Schedule(() => SendEmail(), DateTime.Now.AddMinutes(10));
-
-            SetLog();
-            
-            _backgroundJob.Enqueue(() => SetLog());
-        }
-
-        public void SendEmail()
-        {
-
-        }
-
-        public void RemoveLogs()
-        {
-
-        }
-
-        public void SetLog()
-        {
-
+            NewestAdvertisement = await advertisementAppService.GetNewest(cancellationToken);
         }
     }
 }

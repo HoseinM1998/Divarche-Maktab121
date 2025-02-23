@@ -9,6 +9,10 @@ namespace Divarcheh.Domain.Services
 {
     public static class UserTools
     {
+        public static string GetRole(IEnumerable<Claim> claims)
+        {
+            return claims.FirstOrDefault(x => x.Type == ClaimTypes.Role).Value;
+        }
         public static string GetCityId(IEnumerable<Claim> claims)
         {
             return claims.FirstOrDefault(x => x.Type == "CityId").Value;
