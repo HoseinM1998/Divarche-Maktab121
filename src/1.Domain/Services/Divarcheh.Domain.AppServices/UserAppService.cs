@@ -82,6 +82,7 @@ public class UserAppService : IUserAppService
             await _userManager.AddToRoleAsync(user, role);
 
             await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, role));
+            await _userManager.AddClaimAsync(user, new Claim("CityId", user.CityId.ToString()));
             await _userManager.AddClaimAsync(user, new Claim("FullName", $"{user.FirstName} {user.LastName}"));
 
             if (model.Role == RoleEnum.Visitor)

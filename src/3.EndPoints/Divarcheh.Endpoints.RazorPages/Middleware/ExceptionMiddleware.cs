@@ -1,4 +1,4 @@
-﻿namespace Divarcheh.Endpoints.RazorPages.Middelware
+﻿namespace Divarcheh.Endpoints.RazorPages.Middleware
 {
     public class ExceptionMiddleware
     {
@@ -17,7 +17,7 @@
             }
             catch (Exception e)
             {
-                System.IO.File.WriteAllText("C:/Test/Error.txt", e.Message);
+                File.WriteAllText("C:/Test/Error.txt", e.Message);
             }
             finally
             {

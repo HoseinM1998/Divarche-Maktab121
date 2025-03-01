@@ -1,6 +1,6 @@
 ﻿using Divarcheh.Domain.Core.Entities.Configs;
 
-namespace Divarcheh.Endpoints.RazorPages.Middelware
+namespace Divarcheh.Endpoints.RazorPages.Middleware
 {
 
     public static class MiddlewareExtensions

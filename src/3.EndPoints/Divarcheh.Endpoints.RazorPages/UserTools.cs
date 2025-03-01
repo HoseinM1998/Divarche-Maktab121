@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Divarcheh.Domain.Services
+namespace Divarcheh.Endpoints.RazorPages
 {
     public static class UserTools
     {
@@ -25,6 +25,11 @@ namespace Divarcheh.Domain.Services
         public static string GetUserName(IEnumerable<Claim> claims)
         {
             return claims.FirstOrDefault(x => x.Type == "Username").Value;
+        }
+
+        public static string GetUserId(IEnumerable<Claim> claims)
+        {
+            return claims.FirstOrDefault(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
         }
     }
 }

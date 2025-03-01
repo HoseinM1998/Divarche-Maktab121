@@ -28,7 +28,7 @@ namespace Divarcheh.Domain.Services
             {
                 fileName = Guid.NewGuid().ToString() +
                            ContentDispositionHeaderValue.Parse(FormFile.ContentDisposition).FileName.Trim('"');
-                filePath = Path.Combine($"wwwroot/~/UserTemplate/images/{folderName}", fileName);
+                filePath = Path.Combine($"wwwroot/images/{folderName}", fileName);
                 try
                 {
                     using (var stream = System.IO.File.Create(filePath))
@@ -40,7 +40,7 @@ namespace Divarcheh.Domain.Services
                 {
                     throw new Exception("Upload files operation failed");
                 }
-                return $"/~/UserTemplate/images/{folderName}/{fileName}";
+                return $"/images/{folderName}/{fileName}";
             }
             else
                 fileName = "";
@@ -50,5 +50,10 @@ namespace Divarcheh.Domain.Services
 
         public async Task<List<Brand>> GetBrands(CancellationToken cancellationToken)
             => await _baseDataRepository.GetBrands(cancellationToken);
+
+        public async Task AddAdvImages(List<string> imgAddress, int advId, CancellationToken cancellationToken)
+        {
+            await _baseDataRepository.AddAdvImages(imgAddress, advId, cancellationToken);
+        }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Divarcheh.Domain.AppServices;
 using Divarcheh.Domain.Core.Contracts.AppService;
 using Divarcheh.Domain.Core.Entities.Configs;
-using Divarcheh.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -38,13 +37,15 @@ namespace Divarcheh.Endpoints.RazorPages.Areas.Account.Pages
 
             var userRole = UserTools.GetRole(User.Claims);
 
-            return userRole switch
-            {
-                "Admin" => RedirectToPage("Index", new { area = "Admin" }),
-                "Visitor" => RedirectToPage("Index", new { area = "Visitor" }),
-                "Advertiser" => RedirectToPage("Index", new { area = "Advertiser" }),
-                _ => RedirectToPage("Login"),
-            };
+
+            return RedirectToPage("Index")
+                ; //return userRole switch
+            //{
+            //    "Admin" => RedirectToPage("Index", new { area = "Admin" }),
+            //    "Visitor" => RedirectToPage("Index", new { area = "Visitor" }),
+            //    "Advertiser" => RedirectToPage("Index", new { area = "Advertiser" }),
+            //    _ => RedirectToPage("Login"),
+            //};
         }
     }
 }

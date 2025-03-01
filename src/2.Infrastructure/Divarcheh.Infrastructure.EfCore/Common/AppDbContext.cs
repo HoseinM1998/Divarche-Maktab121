@@ -5,7 +5,6 @@ using Divarcheh.Domain.Core.Entities.Advertisement;
 using Divarcheh.Infrastructure.EfCore.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using MaktabNews.Infrastructure.EfCore.Configurations;
 
 namespace Divarcheh.Infrastructure.EfCore.Common
 {

@@ -26,5 +26,17 @@ namespace Divarcheh.Infrastructure.EfCore.Repositories
 
         public async Task<List<Brand>> GetBrands(CancellationToken cancellationToken)
             => await _dbContext.Brands.AsNoTracking().ToListAsync(cancellationToken);
+
+        public async Task AddAdvImages(List<string> imgAddress, int advId,CancellationToken cancellationToken)
+        {
+            var images = imgAddress.Select(x => new Image()
+            {
+                Path = x,
+                AdvertisementId = advId
+            });
+
+            await _dbContext.Images.AddRangeAsync(images, cancellationToken);
+            await _dbContext.SaveChangesAsync(cancellationToken);
+        }
     }
 }

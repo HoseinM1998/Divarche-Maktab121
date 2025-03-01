@@ -1,6 +1,7 @@
 ﻿@page
 @using Divarcheh.Domain.Core.Contracts.Service
-@model Divarcheh.Endpoints.RazorPages.Pages.RegisterModel
+@model Divarcheh.Endpoints.RazorPages.Areas.Account.Pages.RegisterModel
+
 @{
 }
 
@@ -37,6 +38,13 @@
                         <div class="form-group">
                             <input asp-for="User.Mobile" type="text" class="form-control" placeholder="شماره موبایل">
                         </div>
+                        
+                        <select asp-for="User.Role" class="form-control">
+                            <option value="#">انتخاب نقش</option>
+                                <option value="2">بازدید کننده</option>
+                                <option value="3">آگهی دهنده</option>
+                        </select><!-- select -->
+
                         <!-- select -->
                         <select asp-for="User.CityId" class="form-control">
                             <option value="#">انتخاب شهر</option>

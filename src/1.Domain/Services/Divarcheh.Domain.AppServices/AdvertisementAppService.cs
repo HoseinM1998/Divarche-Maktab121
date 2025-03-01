@@ -13,16 +13,19 @@ namespace Divarcheh.Domain.AppServices
     {
         public async Task Create(CreateAdvertisementDto model, CancellationToken cancellationToken)
         {
+            var imagesPath = new List<string>();
             var advId = await advertisementService.Create(model, cancellationToken);
 
             if (model.Images is not null)
             {
                 foreach (var image in model.Images)
                 {
-                    var imagePath = await baseDataService.UploadImage(image, "Profiles", cancellationToken);
+                    var imagePath = await baseDataService.UploadImage(image, "Advertiser", cancellationToken);
+                    imagesPath.Add(imagePath);
                 }
-            }
 
+                await baseDataService.AddAdvImages(imagesPath, advId, cancellationToken);
+            }
         }
 
         public async Task<GetForItemsOutputDto> GetForItems(int childId, CancellationToken cancellationToken)

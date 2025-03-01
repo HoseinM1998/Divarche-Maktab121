@@ -8,7 +8,7 @@ using Divarcheh.Domain.Core.Contracts.Repository;
 using Divarcheh.Domain.Core.Dto.Advertisement;
 using Divarcheh.Domain.Core.Dto.HomePage;
 
-namespace Divarcheh.Domain.AppServices
+namespace Divarcheh.Domain.Services
 {
     public class CategoryService(ICategoryRepository categoryRepository) : ICategoryService
     {

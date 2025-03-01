@@ -9,6 +9,7 @@ namespace Divarcheh.Domain.Core.Contracts.Service
         Task<List<City>> GetCities(CancellationToken cancellationToken);
         Task<string> UploadImage(IFormFile FormFile , string folderName , CancellationToken cancellationToken);
         Task<List<Brand>> GetBrands(CancellationToken cancellationToken);
+        Task AddAdvImages(List<string> imgAddress, int advId, CancellationToken cancellationToken);
 
     }
 }

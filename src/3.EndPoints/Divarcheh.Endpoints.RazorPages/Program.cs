@@ -6,7 +6,6 @@ using Divarcheh.Infrastructure.EfCore.Common;
 using Divarcheh.Domain.Core.Contracts.Service;
 using Divarcheh.Domain.Core.Contracts.AppService;
 using Divarcheh.Domain.Core.Contracts.Repository;
-using Divarcheh.Endpoints.RazorPages.Middelware;
 using Divarcheh.Infrastructure.EfCore.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;

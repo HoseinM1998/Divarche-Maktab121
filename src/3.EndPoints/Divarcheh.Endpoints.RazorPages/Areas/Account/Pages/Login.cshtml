@@ -5,15 +5,18 @@
 @{
 }
 
-<div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
 
 <section id="main" class="clearfix user-page">
+
     @if (!User.Identity.IsAuthenticated)
     {
         <div class="container">
             <div class="row text-center">
                 <!-- user-login -->
                 <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
                     <div class="user-account">
                         <h2>فرم ورود</h2>
                         <!-- form -->
@@ -28,10 +31,11 @@
                         </form><!-- form -->
                         <!-- forgot-password -->
                     </div>
-                    <a asp-page="reg" class="btn-primary">ساخت اکانت جدید</a>
+                    <a asp-page="register" class="btn-primary">ساخت اکانت جدید</a>
                 </div><!-- user-login -->
             </div><!-- row -->
-        </div><!-- container -->
+        </div>
+        <!-- container -->
     }
     else
     {

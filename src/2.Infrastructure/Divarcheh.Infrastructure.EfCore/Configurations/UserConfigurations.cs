@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using System.Security.Claims;
 
-namespace MaktabNews.Infrastructure.EfCore.Configurations;
+namespace Divarcheh.Infrastructure.EfCore.Configurations;
 public class UserConfigurations
 {
     public static void SeedUsers(ModelBuilder builder)

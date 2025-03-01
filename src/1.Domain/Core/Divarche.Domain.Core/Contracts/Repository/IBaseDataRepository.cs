@@ -8,5 +8,6 @@ namespace Divarcheh.Domain.Core.Contracts.Repository
     {
         Task<List<City>> GetCities(CancellationToken cancellationToken);
         Task<List<Brand>> GetBrands(CancellationToken cancellationToken);
+        Task AddAdvImages(List<string> imgAddress, int advId, CancellationToken cancellationToken);
     }
 }

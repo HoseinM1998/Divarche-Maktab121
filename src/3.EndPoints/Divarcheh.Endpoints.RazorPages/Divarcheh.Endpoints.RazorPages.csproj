@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Account\Pages\Shared\" />
+    <Folder Include="wwwroot\Images\Advertiser\" />
     <Folder Include="wwwroot\Images\Profiles\" />
   </ItemGroup>
 

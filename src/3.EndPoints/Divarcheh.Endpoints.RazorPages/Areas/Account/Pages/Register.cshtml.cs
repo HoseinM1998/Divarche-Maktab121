@@ -1,10 +1,9 @@
-using Divarcheh.Domain.AppServices;
 using Divarcheh.Domain.Core.Contracts.AppService;
 using Divarcheh.Domain.Core.Dto.User;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Divarcheh.Endpoints.RazorPages.Pages
+namespace Divarcheh.Endpoints.RazorPages.Areas.Account.Pages
 {
     public class RegisterModel (IUserAppService userAppService) : PageModel
     {
